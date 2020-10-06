@@ -11,6 +11,7 @@
 		6441B58E252CDF9500B15FB5 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6441B58D252CDF9500B15FB5 /* ApiRequest.swift */; };
 		6441B590252CDFBD00B15FB5 /* CityWeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6441B58F252CDFBD00B15FB5 /* CityWeatherRequest.swift */; };
 		6441B592252CE39500B15FB5 /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6441B591252CE39500B15FB5 /* ApiConfig.swift */; };
+		6441B594252CE71900B15FB5 /* CitiesListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6441B593252CE71900B15FB5 /* CitiesListingPresenter.swift */; };
 		6441B597252CE87500B15FB5 /* CityWeatherFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6441B596252CE87500B15FB5 /* CityWeatherFetcher.swift */; };
 		64D8D69D252BA77500D0D2CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D8D69C252BA77500D0D2CA /* AppDelegate.swift */; };
 		64D8D6A1252BA77500D0D2CA /* CitiesListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D8D6A0252BA77500D0D2CA /* CitiesListingViewController.swift */; };
@@ -26,6 +27,7 @@
 		6441B58D252CDF9500B15FB5 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		6441B58F252CDFBD00B15FB5 /* CityWeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherRequest.swift; sourceTree = "<group>"; };
 		6441B591252CE39500B15FB5 /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
+		6441B593252CE71900B15FB5 /* CitiesListingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListingPresenter.swift; sourceTree = "<group>"; };
 		6441B596252CE87500B15FB5 /* CityWeatherFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherFetcher.swift; sourceTree = "<group>"; };
 		64D8D699252BA77500D0D2CA /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D8D69C252BA77500D0D2CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				64D8D6A0252BA77500D0D2CA /* CitiesListingViewController.swift */,
+				6441B593252CE71900B15FB5 /* CitiesListingPresenter.swift */,
 			);
 			path = CitiesListing;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				64D8D6A1252BA77500D0D2CA /* CitiesListingViewController.swift in Sources */,
 				6441B590252CDFBD00B15FB5 /* CityWeatherRequest.swift in Sources */,
 				6441B597252CE87500B15FB5 /* CityWeatherFetcher.swift in Sources */,
+				6441B594252CE71900B15FB5 /* CitiesListingPresenter.swift in Sources */,
 				6441B58B252CD89200B15FB5 /* ApiProvider.swift in Sources */,
 				64D8D69D252BA77500D0D2CA /* AppDelegate.swift in Sources */,
 				6441B58E252CDF9500B15FB5 /* ApiRequest.swift in Sources */,

@@ -1,10 +1,17 @@
 import UIKit
 
-class CitiesListingViewController: UIViewController {
+protocol CitiesListingView {
+
+}
+
+class CitiesListingViewController: UIViewController, CitiesListingView {
+
+    weak var presenter: CitiesListingPresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        presenter?.fetchWeather(for: "London")
+
     }
 
 
