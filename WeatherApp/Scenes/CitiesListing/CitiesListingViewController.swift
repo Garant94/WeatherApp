@@ -1,12 +1,12 @@
 import UIKit
 
-protocol CitiesListingView {
+protocol CitiesListingView: class {
 
 }
 
 class CitiesListingViewController: UIViewController, CitiesListingView {
 
-    weak var presenter: CitiesListingPresenter?
+    var presenter: CitiesListingPresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
