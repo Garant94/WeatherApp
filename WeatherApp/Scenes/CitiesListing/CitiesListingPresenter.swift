@@ -33,7 +33,7 @@ class CitiesListingPresenterImpl: CitiesListingPresenter {
     }
     
     func cityName(at index: Int) -> String {
-        return cities[index]
+        return cities.reversed()[index]
     }
     
     
