@@ -1,8 +1,9 @@
 import Foundation
 
 protocol CitiesListingPresenter {
+    var citiesCount: Int { get }
     func fetchWeather(for city: String)
-    
+    func cityName(at index: Int) -> String
 }
 
 class CitiesListingPresenterImpl: CitiesListingPresenter {
@@ -11,6 +12,10 @@ class CitiesListingPresenterImpl: CitiesListingPresenter {
     private var cities: [String] = []
     
     unowned let view: CitiesListingView
+    
+    var citiesCount: Int {
+        cities.count
+    }
 
     init(view: CitiesListingView) {
         self.view = view
@@ -21,9 +26,14 @@ class CitiesListingPresenterImpl: CitiesListingPresenter {
             guard let `self` = self else { return }
             guard !self.cities.contains(weather.name) else { return }
             self.cities.append(weather.name)
+            self.view.reloadListing()
             print(self.cities)
             
         }
+    }
+    
+    func cityName(at index: Int) -> String {
+        return cities[index]
     }
     
     
