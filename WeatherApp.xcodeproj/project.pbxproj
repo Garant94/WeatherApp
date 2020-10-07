@@ -15,6 +15,8 @@
 		6441B597252CE87500B15FB5 /* CityWeatherFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6441B596252CE87500B15FB5 /* CityWeatherFetcher.swift */; };
 		6441B59A252CFED700B15FB5 /* CityWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6441B599252CFED700B15FB5 /* CityWeather.swift */; };
 		6441B59D252D058B00B15FB5 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6441B59C252D058B00B15FB5 /* CityCell.swift */; };
+		64962E00252E2BC60047A52B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64962DFF252E2BC60047A52B /* Router.swift */; };
+		64962E02252E2EFC0047A52B /* ViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64962E01252E2EFC0047A52B /* ViewControllersFactory.swift */; };
 		64D8D69D252BA77500D0D2CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D8D69C252BA77500D0D2CA /* AppDelegate.swift */; };
 		64D8D6A1252BA77500D0D2CA /* CitiesListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D8D6A0252BA77500D0D2CA /* CitiesListingViewController.swift */; };
 		64D8D6A6252BA77600D0D2CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64D8D6A5252BA77600D0D2CA /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 		6441B596252CE87500B15FB5 /* CityWeatherFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherFetcher.swift; sourceTree = "<group>"; };
 		6441B599252CFED700B15FB5 /* CityWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeather.swift; sourceTree = "<group>"; };
 		6441B59C252D058B00B15FB5 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
+		64962DFF252E2BC60047A52B /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		64962E01252E2EFC0047A52B /* ViewControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllersFactory.swift; sourceTree = "<group>"; };
 		64D8D699252BA77500D0D2CA /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D8D69C252BA77500D0D2CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64D8D6A0252BA77500D0D2CA /* CitiesListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListingViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +121,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		64962DFE252E2BB20047A52B /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				64962DFF252E2BC60047A52B /* Router.swift */,
+				64962E01252E2EFC0047A52B /* ViewControllersFactory.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
 		64D8D690252BA77400D0D2CA = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +151,7 @@
 		64D8D69B252BA77500D0D2CA /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				64962DFE252E2BB20047A52B /* Routing */,
 				6441B598252CFE8A00B15FB5 /* Models */,
 				6441B589252CD87300B15FB5 /* Api */,
 				64D8D6B0252BAFA300D0D2CA /* Scenes */,
@@ -290,10 +304,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64962E02252E2EFC0047A52B /* ViewControllersFactory.swift in Sources */,
 				64D8D6A1252BA77500D0D2CA /* CitiesListingViewController.swift in Sources */,
 				6441B590252CDFBD00B15FB5 /* CityWeatherRequest.swift in Sources */,
 				6441B597252CE87500B15FB5 /* CityWeatherFetcher.swift in Sources */,
 				6441B59D252D058B00B15FB5 /* CityCell.swift in Sources */,
+				64962E00252E2BC60047A52B /* Router.swift in Sources */,
 				6441B594252CE71900B15FB5 /* CitiesListingPresenter.swift in Sources */,
 				6441B58B252CD89200B15FB5 /* ApiProvider.swift in Sources */,
 				64D8D69D252BA77500D0D2CA /* AppDelegate.swift in Sources */,
