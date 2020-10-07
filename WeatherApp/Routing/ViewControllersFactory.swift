@@ -10,8 +10,8 @@ class ViewControllersFactoryImpl: ViewControllersFactory {
         switch route {
         case .citiesListing:
             return citiesListingController(router: router)
-        case .weatherDetails(let city):
-            return weatherDetailsController(city: city)
+        case .weatherDetails(let cityWeather):
+            return weatherDetailsController(cityWeather: cityWeather)
         }
     }
     
@@ -23,9 +23,9 @@ class ViewControllersFactoryImpl: ViewControllersFactory {
         return controller
     }
     
-    private func weatherDetailsController(city: String) -> UIViewController {
+    private func weatherDetailsController(cityWeather: CityWeather) -> UIViewController {
         let controller = WeatherDetailsViewController(nibName: nil, bundle: nil)
-        let presenter = WeatherDetailsPresenterImpl(view: controller, city: city)
+        let presenter = WeatherDetailsPresenterImpl(view: controller, cityWeather: cityWeather)
         controller.presenter = presenter
         return controller
     }

@@ -13,10 +13,10 @@ class CitiesListingPresenterImpl: CitiesListingPresenter {
     private let cityWeatherFetcher: CityWeatherFetcher
     private let router: Router
 
-    private var cities: [String] = []
+    private var cityWeathers: [CityWeather] = []
 
     var citiesCount: Int {
-        cities.count
+        cityWeathers.count
     }
 
     init(view: CitiesListingView, cityWeatherFetcher: CityWeatherFetcher, router: Router) {
@@ -28,20 +28,18 @@ class CitiesListingPresenterImpl: CitiesListingPresenter {
     func fetchWeather(for city: String) {
         cityWeatherFetcher.fetchWeather(for: city) { [weak self] weather in
             guard let `self` = self else { return }
-            guard !self.cities.contains(weather.name) else { return }
-            self.cities.insert(city, at: 0)
+            guard !self.cityWeathers.contains(weather) else { return }
+            self.cityWeathers.insert(weather, at: 0)
             self.view.reloadListing()
-            print(self.cities)
-            
         }
     }
 
     func cityName(at index: Int) -> String {
-        return cities[index]
+        return cityWeathers[index].name
     }
     
     func showDetailsForCity(at index: Int) {
-        let city = cities[index]
-        router.push(to: .weatherDetails(city: city), animated: true)
+        let cityWeather = cityWeathers[index]
+        router.push(to: .weatherDetails(cityWeather: cityWeather), animated: true)
     }
 }

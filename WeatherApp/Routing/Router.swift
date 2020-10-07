@@ -3,7 +3,7 @@ import UIKit
 
 enum Route {
     case citiesListing
-    case weatherDetails(city: String)
+    case weatherDetails(cityWeather: CityWeather)
 }
 
 protocol Router {

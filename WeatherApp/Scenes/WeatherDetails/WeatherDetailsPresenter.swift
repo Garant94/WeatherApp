@@ -7,14 +7,14 @@ protocol WeatherDetailsPresenter {
 class WeatherDetailsPresenterImpl: WeatherDetailsPresenter {
     
     private unowned let view: WeatherDetailsView
-    private let cityName: String
+    private let cityWeather: CityWeather
 
-    init(view: WeatherDetailsView, city: String) {
+    init(view: WeatherDetailsView, cityWeather: CityWeather) {
         self.view = view
-        self.cityName = city
+        self.cityWeather = cityWeather
     }
     
     func city() -> String {
-        cityName
+        cityWeather.name
     }
 }
