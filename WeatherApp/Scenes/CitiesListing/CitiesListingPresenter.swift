@@ -7,20 +7,23 @@ protocol CitiesListingPresenter {
 }
 
 class CitiesListingPresenterImpl: CitiesListingPresenter {
-    
-    private let cityWeatherFetcher: CityWeatherFetcher = CityWeatherFetcherImpl()
+
+    private unowned let view: CitiesListingView
+    private let cityWeatherFetcher: CityWeatherFetcher
+    private let router: Router
+
     private var cities: [String] = []
-    
-    unowned let view: CitiesListingView
-    
+
     var citiesCount: Int {
         cities.count
     }
 
-    init(view: CitiesListingView) {
+    init(view: CitiesListingView, cityWeatherFetcher: CityWeatherFetcher, router: Router) {
         self.view = view
+        self.cityWeatherFetcher = cityWeatherFetcher
+        self.router = router
     }
-    
+
     func fetchWeather(for city: String) {
         cityWeatherFetcher.fetchWeather(for: city) { [weak self] weather in
             guard let `self` = self else { return }
@@ -31,11 +34,8 @@ class CitiesListingPresenterImpl: CitiesListingPresenter {
             
         }
     }
-    
+
     func cityName(at index: Int) -> String {
         return cities.reversed()[index]
     }
-    
-    
-    
 }

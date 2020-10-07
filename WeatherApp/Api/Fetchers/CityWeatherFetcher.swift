@@ -5,7 +5,12 @@ protocol CityWeatherFetcher {
 }
 
 class CityWeatherFetcherImpl: CityWeatherFetcher {
-    private let apiProvider: ApiProvider = ApiProviderImpl()
+
+    private let apiProvider: ApiProvider
+
+    init(apiProvider: ApiProvider) {
+        self.apiProvider = apiProvider
+    }
 
     func fetchWeather(for city: String, comletion: @escaping (CityWeather) -> Void) {
         let request = CityWeatherRequest(cityName: city)
