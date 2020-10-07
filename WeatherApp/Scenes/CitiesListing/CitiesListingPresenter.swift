@@ -29,7 +29,7 @@ class CitiesListingPresenterImpl: CitiesListingPresenter {
         cityWeatherFetcher.fetchWeather(for: city) { [weak self] weather in
             guard let `self` = self else { return }
             guard !self.cities.contains(weather.name) else { return }
-            self.cities.append(weather.name)
+            self.cities.insert(city, at: 0)
             self.view.reloadListing()
             print(self.cities)
             
@@ -37,7 +37,7 @@ class CitiesListingPresenterImpl: CitiesListingPresenter {
     }
 
     func cityName(at index: Int) -> String {
-        return cities.reversed()[index]
+        return cities[index]
     }
     
     func showDetailsForCity(at index: Int) {
