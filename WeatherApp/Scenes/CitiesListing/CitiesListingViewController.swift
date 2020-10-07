@@ -57,6 +57,10 @@ extension CitiesListingViewController: UITableViewDelegate {
         return 60
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.showDetailsForCity(at: indexPath.row)
+    }
+    
 }
 
 extension CitiesListingViewController: UITableViewDataSource {

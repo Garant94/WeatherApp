@@ -4,6 +4,7 @@ protocol CitiesListingPresenter {
     var citiesCount: Int { get }
     func fetchWeather(for city: String)
     func cityName(at index: Int) -> String
+    func showDetailsForCity(at index: Int)
 }
 
 class CitiesListingPresenterImpl: CitiesListingPresenter {
@@ -37,5 +38,10 @@ class CitiesListingPresenterImpl: CitiesListingPresenter {
 
     func cityName(at index: Int) -> String {
         return cities.reversed()[index]
+    }
+    
+    func showDetailsForCity(at index: Int) {
+        let city = cities[index]
+        router.push(to: .weatherDetails(city: city), animated: true)
     }
 }
