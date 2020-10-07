@@ -19,6 +19,9 @@
 		64962E02252E2EFC0047A52B /* ViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64962E01252E2EFC0047A52B /* ViewControllersFactory.swift */; };
 		64962E04252E3FDB0047A52B /* WeatherDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64962E03252E3FDB0047A52B /* WeatherDetailsPresenter.swift */; };
 		64962E07252E49D60047A52B /* BackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64962E06252E49D60047A52B /* BackgroundGradientView.swift */; };
+		64962E09252E64C00047A52B /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64962E08252E64C00047A52B /* Temperature.swift */; };
+		64962E0B252E65270047A52B /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64962E0A252E65270047A52B /* Weather.swift */; };
+		64962E0D252E65920047A52B /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64962E0C252E65920047A52B /* Wind.swift */; };
 		64D8D69D252BA77500D0D2CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D8D69C252BA77500D0D2CA /* AppDelegate.swift */; };
 		64D8D6A1252BA77500D0D2CA /* CitiesListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D8D6A0252BA77500D0D2CA /* CitiesListingViewController.swift */; };
 		64D8D6A6252BA77600D0D2CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64D8D6A5252BA77600D0D2CA /* Assets.xcassets */; };
@@ -41,6 +44,9 @@
 		64962E01252E2EFC0047A52B /* ViewControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllersFactory.swift; sourceTree = "<group>"; };
 		64962E03252E3FDB0047A52B /* WeatherDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsPresenter.swift; sourceTree = "<group>"; };
 		64962E06252E49D60047A52B /* BackgroundGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradientView.swift; sourceTree = "<group>"; };
+		64962E08252E64C00047A52B /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
+		64962E0A252E65270047A52B /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		64962E0C252E65920047A52B /* Wind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wind.swift; sourceTree = "<group>"; };
 		64D8D699252BA77500D0D2CA /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D8D69C252BA77500D0D2CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64D8D6A0252BA77500D0D2CA /* CitiesListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListingViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				6441B599252CFED700B15FB5 /* CityWeather.swift */,
+				64962E08252E64C00047A52B /* Temperature.swift */,
+				64962E0A252E65270047A52B /* Weather.swift */,
+				64962E0C252E65920047A52B /* Wind.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -319,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64962E02252E2EFC0047A52B /* ViewControllersFactory.swift in Sources */,
+				64962E0B252E65270047A52B /* Weather.swift in Sources */,
 				64D8D6A1252BA77500D0D2CA /* CitiesListingViewController.swift in Sources */,
 				64962E04252E3FDB0047A52B /* WeatherDetailsPresenter.swift in Sources */,
 				64962E07252E49D60047A52B /* BackgroundGradientView.swift in Sources */,
@@ -328,6 +338,8 @@
 				64962E00252E2BC60047A52B /* Router.swift in Sources */,
 				6441B594252CE71900B15FB5 /* CitiesListingPresenter.swift in Sources */,
 				6441B58B252CD89200B15FB5 /* ApiProvider.swift in Sources */,
+				64962E0D252E65920047A52B /* Wind.swift in Sources */,
+				64962E09252E64C00047A52B /* Temperature.swift in Sources */,
 				64D8D69D252BA77500D0D2CA /* AppDelegate.swift in Sources */,
 				6441B58E252CDF9500B15FB5 /* ApiRequest.swift in Sources */,
 				6441B592252CE39500B15FB5 /* ApiConfig.swift in Sources */,
