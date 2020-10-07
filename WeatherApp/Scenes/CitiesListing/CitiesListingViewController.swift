@@ -7,7 +7,7 @@ protocol CitiesListingView: class {
 
 class CitiesListingViewController: UIViewController, CitiesListingView {
     
-    private let searchController = UISearchController(searchResultsController: nil)
+    private let searchBar = UISearchBar()
     private let tableView = UITableView()
 
     var presenter: CitiesListingPresenter?
@@ -15,7 +15,7 @@ class CitiesListingViewController: UIViewController, CitiesListingView {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setupSearchController()
+        setupSearchBar()
         setupTableView()
     }
     
@@ -23,15 +23,20 @@ class CitiesListingViewController: UIViewController, CitiesListingView {
         tableView.reloadData()
     }
     
-    private func setupSearchController() {
-        searchController.searchResultsUpdater = self
-        navigationItem.searchController = searchController
+    private func setupSearchBar() {
+        view.addSubview(searchBar)
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview()
+        }
+        searchBar.delegate = self
     }
     
     private func setupTableView() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(searchBar.snp.bottom)
+            make.bottom.leading.trailing.equalToSuperview()
         }
         
         tableView.register(CityCell.self, forCellReuseIdentifier: "CityCell")
@@ -40,9 +45,9 @@ class CitiesListingViewController: UIViewController, CitiesListingView {
     }
 }
 
-extension CitiesListingViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else { return }
+extension CitiesListingViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
         presenter?.fetchWeather(for: text)
     }
 }
