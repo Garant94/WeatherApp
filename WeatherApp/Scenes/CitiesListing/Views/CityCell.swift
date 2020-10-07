@@ -35,5 +35,6 @@ class CityCell: UITableViewCell {
     private func setupLayer() {
         backgroundColor = UIColor.white.withAlphaComponent(0.2)
         layer.cornerRadius = 8
+        selectionStyle = .none
     }
 }
