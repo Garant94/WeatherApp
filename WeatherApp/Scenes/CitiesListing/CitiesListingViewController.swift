@@ -14,13 +14,21 @@ class CitiesListingViewController: UIViewController, CitiesListingView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        setupBackground()
         setupSearchBar()
         setupTableView()
     }
     
     func reloadListing() {
         tableView.reloadData()
+    }
+    
+    private func setupBackground() {
+        let backgroundView = BackgroundGradientView()
+        view.addSubview(backgroundView)
+        backgroundView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     private func setupSearchBar() {
@@ -36,12 +44,17 @@ class CitiesListingViewController: UIViewController, CitiesListingView {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom)
-            make.bottom.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(20)
         }
         
-        tableView.register(CityCell.self, forCellReuseIdentifier: "CityCell")
+        tableView.register(CityCell.self, forCellReuseIdentifier: CityCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.contentInset.top = 20
+        tableView.showsVerticalScrollIndicator = false
     }
 }
 
@@ -50,17 +63,16 @@ extension CitiesListingViewController: UISearchBarDelegate {
         guard let text = searchBar.text else { return }
         presenter?.fetchWeather(for: text)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
 }
 
 extension CitiesListingViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.showDetailsForCity(at: indexPath.row)
     }
-    
 }
 
 extension CitiesListingViewController: UITableViewDataSource {
@@ -69,7 +81,7 @@ extension CitiesListingViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityCell else { fatalError("CityCell not registered")}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CityCell.identifier, for: indexPath) as? CityCell else { fatalError("CityCell not registered")}
         cell.cityNameLabel.text = presenter?.cityName(at: indexPath.row)
         return cell
     }
