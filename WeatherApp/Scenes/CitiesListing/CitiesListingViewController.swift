@@ -5,7 +5,7 @@ protocol CitiesListingView: class {
     func reloadListing()
 }
 
-class CitiesListingViewController: UIViewController, CitiesListingView {
+class CitiesListingViewController: UIViewController, CitiesListingView, HasBackgroundGradient {
     
     private let searchBar = UISearchBar()
     private let tableView = UITableView()
@@ -21,14 +21,6 @@ class CitiesListingViewController: UIViewController, CitiesListingView {
     
     func reloadListing() {
         tableView.reloadData()
-    }
-    
-    private func setupBackground() {
-        let backgroundView = BackgroundGradientView()
-        view.addSubview(backgroundView)
-        backgroundView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
     }
     
     private func setupSearchBar() {
