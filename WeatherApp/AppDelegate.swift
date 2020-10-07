@@ -4,13 +4,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     internal var window: UIWindow?
-    private var router: Router?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let navigationController = UINavigationController(nibName: nil, bundle: nil)
         
-        router = RouterImpl(
+        let router = RouterImpl(
             navigationController: navigationController,
             viewControllersFactory: ViewControllersFactoryImpl()
         )
@@ -19,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         self.window = window
-        router?.start(root: .citiesListing)
+        router.start(root: .citiesListing)
         
         return true
     }
