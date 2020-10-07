@@ -19,6 +19,7 @@ class RouterImpl: Router {
     init(navigationController: UINavigationController, viewControllersFactory: ViewControllersFactory) {
         self.navigationController = navigationController
         self.viewControllersFactory = viewControllersFactory
+        setupNavigationBar()
     }
 
     func push(to route: Route, animated: Bool) {
@@ -28,5 +29,10 @@ class RouterImpl: Router {
     func start(root: Route) {
         let controller = viewControllersFactory.controller(for: root, router: self)
         navigationController.setViewControllers([controller], animated: false)
+    }
+    
+    private func setupNavigationBar() {
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController.navigationBar.shadowImage = UIImage()
     }
 }
