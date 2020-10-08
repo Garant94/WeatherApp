@@ -14,6 +14,7 @@ struct WeatherDetailsContentViewModel {
 class WeatherDetailsContentView: UIView {
 
     private let indicatorsStackView = UIStackView()
+    private let iconsLicenseLabel = UILabel()
     
     let weatherStateImageView = UIImageView()
     let temperatureLabel = UILabel()
@@ -36,6 +37,7 @@ class WeatherDetailsContentView: UIView {
         setupTemperatureLabel()
         setupWeatherDescriptionLabel()
         setupIndicatorsStackView()
+        setupIconsLicenseLabel()
     }
     
     private func setupWeatherStateImageView() {
@@ -78,5 +80,16 @@ class WeatherDetailsContentView: UIView {
         [minTempIndicatorView,
          maxTempIndicatorView,
          windSpeedIndicatorView].forEach { indicatorsStackView.addArrangedSubview($0) }
+    }
+    
+    private func setupIconsLicenseLabel() {
+        addSubview(iconsLicenseLabel)
+        iconsLicenseLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(2)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(2)
+        }
+        iconsLicenseLabel.font = UIFont(name: "TimesNewRomanPSMT", size: 8)
+        iconsLicenseLabel.textColor = .gray
+        iconsLicenseLabel.text = "Icons made by https://www.flaticon.com/authors/freepik"
     }
 }
