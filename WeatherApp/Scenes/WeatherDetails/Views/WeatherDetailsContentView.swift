@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 struct WeatherDetailsContentViewModel {
+    let city: String
     let temperature: (value: String, color: UIColor)
     let weatherState: String
     let weatherDescription: String
