@@ -25,7 +25,8 @@ class ViewControllersFactoryImpl: ViewControllersFactory {
     
     private func weatherDetailsController(cityWeather: CityWeather) -> UIViewController {
         let controller = WeatherDetailsViewController(nibName: nil, bundle: nil)
-        let presenter = WeatherDetailsPresenterImpl(view: controller, cityWeather: cityWeather)
+        let formatter = WeatherDetailsFormatterImpl()
+        let presenter = WeatherDetailsPresenterImpl(view: controller, cityWeather: cityWeather, weatherFormatter: formatter)
         controller.presenter = presenter
         return controller
     }

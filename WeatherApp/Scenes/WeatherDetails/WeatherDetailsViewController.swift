@@ -4,25 +4,39 @@ import SnapKit
 protocol WeatherDetailsView: class {
 }
 
-class WeatherDetailsViewController: UIViewController, WeatherDetailsView {
+class WeatherDetailsViewController: UIViewController, WeatherDetailsView, HasBackgroundGradient {
     
-    private let label = UILabel()
+    private let contentView = WeatherDetailsContentView()
     
     var presenter: WeatherDetailsPresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(label)
-        label.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
-        
-        label.text = presenter?.city()
-        label.textColor = .black
-
-        // Do any additional setup after loading the view.
-        
+        setupViews()
+        configure()
     }
     
+    func configure() {
+        guard let viewModel = presenter?.details() else { return }
+        navigationItem.title = viewModel.city
+        contentView.temperatureLabel.text = viewModel.temperature.value
+        contentView.temperatureLabel.textColor = viewModel.temperature.color
+        contentView.weatherStateLabel.text = viewModel.weatherState
+        contentView.weatherDescriptionLabel.text = viewModel.weatherDescription
+        contentView.temperatureMinLabel.text = viewModel.temperatureMin
+        contentView.temperatureMaxLabel.text = viewModel.temperatureMax
+        contentView.windSpeedLabel.text = viewModel.windSpeed
+    }
+
+    private func setupViews() {
+        setupBackground()
+        setupContentView()
+    }
+    
+    private func setupContentView() {
+        view.addSubview(contentView)
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
 }
