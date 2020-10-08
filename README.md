@@ -1,0 +1,2 @@
+# WeatherApp
+run `pod install`
