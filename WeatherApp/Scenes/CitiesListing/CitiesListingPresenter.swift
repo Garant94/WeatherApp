@@ -26,6 +26,11 @@ class CitiesListingPresenterImpl: CitiesListingPresenter {
     }
 
     func fetchWeather(for city: String) {
+        guard isValid(city: city) else {
+            view.showSimpleAlert(title: "Error", message: "City not valid")
+            return
+        }
+        
         cityWeatherFetcher.fetchWeather(for: city) { [weak self] weather in
             guard let `self` = self else { return }
             guard !self.cityWeathers.contains(weather) else { return }
@@ -41,5 +46,10 @@ class CitiesListingPresenterImpl: CitiesListingPresenter {
     func showDetailsForCity(at index: Int) {
         let cityWeather = cityWeathers[index]
         router.push(to: .weatherDetails(cityWeather: cityWeather), animated: true)
+    }
+    
+    private func isValid(city: String) -> Bool {
+        let pattern = "[a-zA-Z]"
+        return city.range(of: pattern, options: .regularExpression) != nil
     }
 }

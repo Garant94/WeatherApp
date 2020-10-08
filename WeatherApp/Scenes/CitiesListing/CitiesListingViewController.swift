@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-protocol CitiesListingView: class {
+protocol CitiesListingView: class, AlertHandler {
     func reloadListing()
 }
 
