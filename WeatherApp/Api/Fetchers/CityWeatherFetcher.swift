@@ -1,7 +1,7 @@
 import Foundation
 
 protocol CityWeatherFetcher {
-    func fetchWeather(for city: String, comletion: @escaping (CityWeather) -> Void)
+    func fetchWeather(for city: String, comletion: @escaping (CityWeather?, WeatherResponseError?) -> Void)
 }
 
 class CityWeatherFetcherImpl: CityWeatherFetcher {
@@ -12,7 +12,7 @@ class CityWeatherFetcherImpl: CityWeatherFetcher {
         self.apiProvider = apiProvider
     }
 
-    func fetchWeather(for city: String, comletion: @escaping (CityWeather) -> Void) {
+    func fetchWeather(for city: String, comletion: @escaping (CityWeather?, WeatherResponseError?) -> Void) {
         let request = CityWeatherRequest(cityName: city)
         apiProvider.performRequest(request: request, comletion: comletion)
     }

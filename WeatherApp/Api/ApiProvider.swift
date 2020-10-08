@@ -2,15 +2,20 @@ import Foundation
 import Alamofire
 
 protocol ApiProvider {
-    func performRequest(request: ApiRequest, comletion: @escaping (CityWeather) -> Void)
+    func performRequest(request: ApiRequest, comletion: @escaping (CityWeather?, WeatherResponseError?) -> Void)
 }
 
 class ApiProviderImpl: ApiProvider {
 
-    func performRequest(request: ApiRequest, comletion: @escaping (CityWeather) -> Void) {
+    func performRequest(request: ApiRequest, comletion: @escaping (CityWeather?, WeatherResponseError?) -> Void) {
         let fullRequest = buildRequest(apiRequest: request)
         AF.request(fullRequest).responseDecodable(of: CityWeather.self) { response in
-            _ = response.map { comletion($0) }
+            switch response.result {
+            case .success(let weather):
+                comletion(weather, nil)
+            case .failure:
+                comletion(nil, WeatherForCityResponseError())
+            }
         }
     }
     

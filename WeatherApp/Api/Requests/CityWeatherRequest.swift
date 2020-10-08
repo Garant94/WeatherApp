@@ -1,5 +1,9 @@
 import Foundation
 
+struct WeatherForCityResponseError: WeatherResponseError {
+   var message: String = "Cant find"
+}
+
 struct CityWeatherRequest: ApiRequest {
     private let cityName: String
     var url: String {

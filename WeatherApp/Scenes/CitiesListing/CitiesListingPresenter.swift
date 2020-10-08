@@ -31,8 +31,15 @@ class CitiesListingPresenterImpl: CitiesListingPresenter {
             return
         }
         
-        cityWeatherFetcher.fetchWeather(for: city) { [weak self] weather in
+        cityWeatherFetcher.fetchWeather(for: city) { [weak self] weather, error in
             guard let `self` = self else { return }
+
+            guard let weather = weather else {
+                let message = error?.message ?? "Unknown error"
+                self.view.showSimpleAlert(title: "Error", message: message)
+                return
+            }
+
             guard !self.cityWeathers.contains(weather) else { return }
             self.cityWeathers.insert(weather, at: 0)
             self.view.reloadListing()
