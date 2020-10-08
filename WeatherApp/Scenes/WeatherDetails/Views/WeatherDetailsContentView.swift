@@ -4,8 +4,8 @@ import UIKit
 struct WeatherDetailsContentViewModel {
     let city: String
     let temperature: (value: String, color: UIColor)
-    let weatherState: String
-    let weatherDescription: String
+    let weatherState: String?
+    let weatherDescription: String?
     let temperatureMin: String
     let temperatureMax: String
     let windSpeed: String

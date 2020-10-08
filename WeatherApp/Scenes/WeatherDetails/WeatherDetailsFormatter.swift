@@ -10,8 +10,8 @@ class WeatherDetailsFormatterImpl: WeatherDetailsFormatter {
         WeatherDetailsContentViewModel(
             city: weather.name,
             temperature: formatMainTemperature(value: weather.main.temp) ,
-            weatherState: "\(weather.weather[0].main)",
-            weatherDescription: "\(weather.weather[0].description)",
+            weatherState: weather.weather.first?.main,
+            weatherDescription: weather.weather.first?.description,
             temperatureMin: formatTemperature(value: weather.main.tempMin),
             temperatureMax: formatTemperature(value: weather.main.tempMax),
             windSpeed: "\(weather.wind.speed) m/s"

@@ -21,7 +21,7 @@ class WeatherDetailsViewController: UIViewController, WeatherDetailsView, HasBac
         navigationItem.title = viewModel.city
         contentView.temperatureLabel.text = viewModel.temperature.value
         contentView.temperatureLabel.textColor = viewModel.temperature.color
-        contentView.weatherStateImageView.image = UIImage(named: viewModel.weatherState) ?? UIImage(named: "Default")
+        contentView.weatherStateImageView.image = UIImage(named: viewModel.weatherState ?? "Default")
         contentView.weatherDescriptionLabel.text = viewModel.weatherDescription
         contentView.minTempIndicatorView.textLabel.text = viewModel.temperatureMin
         contentView.maxTempIndicatorView.textLabel.text = viewModel.temperatureMax
