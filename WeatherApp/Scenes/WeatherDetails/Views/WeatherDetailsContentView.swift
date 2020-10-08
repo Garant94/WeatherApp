@@ -13,12 +13,14 @@ struct WeatherDetailsContentViewModel {
 
 class WeatherDetailsContentView: UIView {
 
+    private let indicatorsStackView = UIStackView()
+    
+    let weatherStateImageView = UIImageView()
     let temperatureLabel = UILabel()
-    let weatherStateLabel = UILabel()
     let weatherDescriptionLabel = UILabel()
-    let temperatureMinLabel = UILabel()
-    let temperatureMaxLabel = UILabel()
-    let windSpeedLabel = UILabel()
+    let minTempIndicatorView = IndicatorView(image: UIImage(named: "tMin"))
+    let maxTempIndicatorView = IndicatorView(image: UIImage(named: "tMax"))
+    let windSpeedIndicatorView = IndicatorView(image: UIImage(named: "wind"))
     
     init() {
         super.init(frame: .zero)
@@ -30,62 +32,51 @@ class WeatherDetailsContentView: UIView {
     }
     
     private func setupViews() {
+        setupWeatherStateImageView()
         setupTemperatureLabel()
-        setupWeatherStateLabel()
         setupWeatherDescriptionLabel()
-        setupTemperatureMinLabel()
-        setupTemperatureMaxLabel()
-        setupWindSpeedLabel()
+        setupIndicatorsStackView()
+    }
+    
+    private func setupWeatherStateImageView() {
+        addSubview(weatherStateImageView)
+        weatherStateImageView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(UIScreen.main.bounds.width)
+        }
     }
     
     private func setupTemperatureLabel() {
         addSubview(temperatureLabel)
         temperatureLabel.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(20)
-            make.centerX.equalToSuperview()
+            make.center.equalTo(weatherStateImageView)
         }
-//        temperatureLabel.font = UIFont(name: temperatureLabel.font.fontName, size: 50)
-    }
-
-    private func setupWeatherStateLabel() {
-        addSubview(weatherStateLabel)
-        weatherStateLabel.snp.makeConstraints { make in
-            make.top.equalTo(temperatureLabel.snp.bottom).offset(12)
-            make.centerX.equalToSuperview()
-        }
+        temperatureLabel.font = UIFont(name: "TimesNewRomanPSMT", size: 60)
     }
 
     private func setupWeatherDescriptionLabel() {
         addSubview(weatherDescriptionLabel)
         weatherDescriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(weatherStateLabel.snp.bottom).offset(12)
+            make.top.equalTo(temperatureLabel.snp.bottom).offset(12)
             make.centerX.equalToSuperview()
         }
+        weatherDescriptionLabel.textColor = .gray
     }
-
-    private func setupTemperatureMinLabel() {
-        addSubview(temperatureMinLabel)
-        temperatureMinLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(24)
-            make.top.equalTo(weatherDescriptionLabel.snp.bottom).offset(25)
-        }
-    }
-
-    private func setupTemperatureMaxLabel() {
-        addSubview(temperatureMaxLabel)
-        temperatureMaxLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(24)
-            make.top.equalTo(temperatureMinLabel.snp.bottom).offset(12)
+    
+    private func setupIndicatorsStackView() {
+        addSubview(indicatorsStackView)
+        indicatorsStackView.snp.makeConstraints { make in
+            make.top.equalTo(weatherStateImageView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().inset(20)
+            make.trailing.bottom.lessThanOrEqualToSuperview().inset(20)
         }
         
-    }
-
-    private func setupWindSpeedLabel() {
-        addSubview(windSpeedLabel)
-        windSpeedLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(24)
-            make.top.equalTo(temperatureMaxLabel.snp.bottom).offset(12)
-        }
+        indicatorsStackView.axis = .vertical
+        indicatorsStackView.spacing = 12
         
+        [minTempIndicatorView,
+         maxTempIndicatorView,
+         windSpeedIndicatorView].forEach { indicatorsStackView.addArrangedSubview($0) }
     }
 }

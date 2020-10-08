@@ -21,11 +21,11 @@ class WeatherDetailsViewController: UIViewController, WeatherDetailsView, HasBac
         navigationItem.title = viewModel.city
         contentView.temperatureLabel.text = viewModel.temperature.value
         contentView.temperatureLabel.textColor = viewModel.temperature.color
-        contentView.weatherStateLabel.text = viewModel.weatherState
+        contentView.weatherStateImageView.image = UIImage(named: viewModel.weatherState) ?? UIImage(named: "Default")
         contentView.weatherDescriptionLabel.text = viewModel.weatherDescription
-        contentView.temperatureMinLabel.text = viewModel.temperatureMin
-        contentView.temperatureMaxLabel.text = viewModel.temperatureMax
-        contentView.windSpeedLabel.text = viewModel.windSpeed
+        contentView.minTempIndicatorView.textLabel.text = viewModel.temperatureMin
+        contentView.maxTempIndicatorView.textLabel.text = viewModel.temperatureMax
+        contentView.windSpeedIndicatorView.textLabel.text = viewModel.windSpeed
     }
 
     private func setupViews() {
