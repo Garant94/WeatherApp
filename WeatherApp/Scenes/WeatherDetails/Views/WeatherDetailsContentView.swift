@@ -60,7 +60,7 @@ class WeatherDetailsContentView: UIView {
     private func setupWeatherDescriptionLabel() {
         addSubview(weatherDescriptionLabel)
         weatherDescriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(temperatureLabel.snp.bottom).offset(12)
+            make.top.equalTo(temperatureLabel.snp.bottom).offset(2)
             make.centerX.equalToSuperview()
         }
         weatherDescriptionLabel.textColor = .gray

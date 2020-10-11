@@ -10,7 +10,7 @@ class WeatherDetailsFormatterImpl: WeatherDetailsFormatter {
         WeatherDetailsContentViewModel(
             city: weather.name,
             temperature: formatMainTemperature(value: weather.main.temp) ,
-            weatherState: weather.weather.first?.main,
+            weatherState: weather.weather.first?.main.lowercased(),
             weatherDescription: weather.weather.first?.description,
             temperatureMin: formatTemperature(value: weather.main.tempMin),
             temperatureMax: formatTemperature(value: weather.main.tempMax),
